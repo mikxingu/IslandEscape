@@ -3,9 +3,7 @@ using UnityEngine.AI;
 
 public class CharacterController : MonoBehaviour
 {
-    //[SerializeField] Transform targetTransform = null;
-
-    NavMeshAgent currentAgent;
+	NavMeshAgent currentAgent;
 
 	Ray lastRay;
 	private void Start()

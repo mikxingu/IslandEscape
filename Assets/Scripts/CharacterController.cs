@@ -19,12 +19,13 @@ public class CharacterController : MonoBehaviour
 			
 		}
 		
-
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			currentAgent.Stop();
 			//targetTransform = null;
 		}
+
+		UpdateAnimator();
     }
 
 	void MoveToCursor()
@@ -36,5 +37,13 @@ public class CharacterController : MonoBehaviour
 		{
 			currentAgent.SetDestination(hit.point);
 		}
+	}
+
+	void UpdateAnimator()
+	{
+		Vector3 velocity = currentAgent.velocity;
+		Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+		float speed = localVelocity.z;
+		GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
 	}
 }

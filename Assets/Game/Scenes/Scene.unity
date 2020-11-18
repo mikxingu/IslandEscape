@@ -2194,31 +2194,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.38300002, z: 0}
   m_TimeToStationary: 0.5
---- !u!1 &2135942890 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8065350583050218659, guid: f57015b862f614748addfc7a8e8a3986,
-    type: 3}
-  m_PrefabInstance: {fileID: 8065350584816716361}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2135942891
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135942890}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
-  m_Controller: {fileID: 9100000, guid: d25daf76dc99bf74b9e474aa070e8dc1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &2135942896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8065350583050218663, guid: f57015b862f614748addfc7a8e8a3986,
@@ -2232,14 +2207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2135942892, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
-      propertyPath: m_Speed
-      value: 5.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135942892, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 8065350583050218659, guid: f57015b862f614748addfc7a8e8a3986,
         type: 3}
       propertyPath: m_Name

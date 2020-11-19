@@ -586,6 +586,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 349117578}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &459405368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8065350583050218659, guid: f57015b862f614748addfc7a8e8a3986,
+    type: 3}
+  m_PrefabInstance: {fileID: 8065350584816716361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &459405371
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459405368}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 5.66
+  m_Acceleration: 17
+  avoidancePriority: 50
+  m_AngularSpeed: 1000
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: -0.12
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &527887467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2207,6 +2235,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 226109183206084139, guid: f57015b862f614748addfc7a8e8a3986,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8065350583050218659, guid: f57015b862f614748addfc7a8e8a3986,
         type: 3}
       propertyPath: m_Name
@@ -2267,5 +2300,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2135942892, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f57015b862f614748addfc7a8e8a3986, type: 3}

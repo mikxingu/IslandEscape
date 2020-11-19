@@ -1,44 +1,47 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using RPG.Movement;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace RPG.Control
 {
-	CharacterMover characterMover;
-	private void Start()
+	public class PlayerController : MonoBehaviour
 	{
-		characterMover = GetComponent<CharacterMover>();
-	}
-	void Update()
-	{
-		HandleInput();
-	}
-
-	void HandleInput()
-	{
-		// Left Click For movement
-		if (Input.GetMouseButton(0))
+		CharacterMover characterMover;
+		private void Start()
 		{
-
-			MoveToCursor();
-
+			characterMover = GetComponent<CharacterMover>();
+		}
+		void Update()
+		{
+			HandleInput();
 		}
 
-		// "S" Key to Stop
-		if (Input.GetKeyDown(KeyCode.S))
+		void HandleInput()
 		{
-			characterMover.Stop();
-			//targetTransform = null;
+			// Left Click For movement
+			if (Input.GetMouseButton(0))
+			{
+
+				MoveToCursor();
+
+			}
+
+			// "S" Key to Stop
+			if (Input.GetKeyDown(KeyCode.S))
+			{
+				characterMover.Stop();
+				//targetTransform = null;
+			}
 		}
-	}
-	void MoveToCursor()
-	{
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); ;
-		RaycastHit hit;
-		bool hasHit = Physics.Raycast(ray, out hit);
-		if (hasHit)
+		void MoveToCursor()
 		{
-			characterMover.MoveTo(hit.point);
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); ;
+			RaycastHit hit;
+			bool hasHit = Physics.Raycast(ray, out hit);
+			if (hasHit)
+			{
+				characterMover.MoveTo(hit.point);
+			}
 		}
 	}
 }
+

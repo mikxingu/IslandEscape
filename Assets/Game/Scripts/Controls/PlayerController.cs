@@ -1,4 +1,5 @@
 ﻿using RPG.Movement;
+using RPG.Combat;
 using UnityEngine;
 
 namespace RPG.Control
@@ -6,9 +7,11 @@ namespace RPG.Control
 	public class PlayerController : MonoBehaviour
 	{
 		CharacterMover characterMover;
+		Fighter characterFighter;
 		private void Start()
 		{
 			characterMover = GetComponent<CharacterMover>();
+			characterFighter = GetComponent<Fighter>();
 		}
 		void Update()
 		{
@@ -18,12 +21,10 @@ namespace RPG.Control
 		void HandleInput()
 		{
 			// Left Click For movement
-			if (Input.GetMouseButton(0))
-			{
+			InteractLeftClick();
 
-				MoveToCursor();
-
-			}
+			// Right click for combat
+			InteractRightClick();
 
 			// "S" Key to Stop
 			if (Input.GetKeyDown(KeyCode.S))
@@ -32,15 +33,46 @@ namespace RPG.Control
 				//targetTransform = null;
 			}
 		}
+
+		
+
+		void InteractLeftClick()
+		{
+			if (Input.GetMouseButton(0))
+			{
+				MoveToCursor();
+			}
+		}
+		void InteractRightClick()
+		{
+				RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+				foreach (RaycastHit hit in hits)
+				{
+					CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+
+					if (Input.GetMouseButtonDown(1))
+					{
+						if (target != null)
+						{
+							characterFighter.Attack(target);
+						}
+					}
+				}
+		}
+
 		void MoveToCursor()
 		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); ;
 			RaycastHit hit;
-			bool hasHit = Physics.Raycast(ray, out hit);
+			bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
 			if (hasHit)
 			{
 				characterMover.MoveTo(hit.point);
 			}
+		}
+
+		private static Ray GetMouseRay()
+		{
+			return Camera.main.ScreenPointToRay(Input.mousePosition);
 		}
 	}
 }

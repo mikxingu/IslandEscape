@@ -20,28 +20,37 @@ namespace RPG.Control
 
 		void HandleInput()
 		{
-			// Left Click For movement
-			InteractLeftClick();
-
-			// Right click for combat
-			InteractRightClick();
-
 			// "S" Key to Stop
 			if (Input.GetKeyDown(KeyCode.S))
 			{
 				characterMover.Stop();
-				//targetTransform = null;
 			}
+
+			// Right click for combat/interaction
+			InteractRightClick();
+
+
+			// Left Click For movement/selection
+			if (InteractLeftClick()) return;
+
+			print("Nothing to do.");
 		}
 
 		
 
-		void InteractLeftClick()
+		bool InteractLeftClick()
 		{
-			if (Input.GetMouseButton(0))
+			RaycastHit hit;
+			bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+			if (hasHit)
 			{
-				MoveToCursor();
+				if (Input.GetMouseButton(0))
+				{
+					characterMover.MoveTo(hit.point);
+				}
+				return true;
 			}
+			return false;
 		}
 		void InteractRightClick()
 		{
@@ -59,17 +68,7 @@ namespace RPG.Control
 					}
 				}
 		}
-
-		void MoveToCursor()
-		{
-			RaycastHit hit;
-			bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
-			if (hasHit)
-			{
-				characterMover.MoveTo(hit.point);
-			}
-		}
-
+			
 		private static Ray GetMouseRay()
 		{
 			return Camera.main.ScreenPointToRay(Input.mousePosition);

@@ -965,6 +965,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 459405371, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8065350583050218659, guid: f57015b862f614748addfc7a8e8a3986,
         type: 3}
       propertyPath: m_Name
@@ -1024,6 +1028,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365913434873169839, guid: f57015b862f614748addfc7a8e8a3986,
+        type: 3}
+      propertyPath: weaponRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3288436433358637880, guid: f57015b862f614748addfc7a8e8a3986, type: 3}

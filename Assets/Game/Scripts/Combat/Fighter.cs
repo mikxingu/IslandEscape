@@ -18,14 +18,17 @@ namespace RPG.Combat
 		private void Update()
 		{
 			bool isInRange = Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
+
+			if (targetTransform == null) return;
+			
 			// If I have a target, I should agro it.
-			if (targetTransform != null && !isInRange)
+			if (!isInRange)
 			{
 				characterMover.MoveTo(targetTransform.position);
 			}
 			else
 			{
-				characterMover.Stop();
+				//characterMover.Stop();
 			}
 		}
 		public void Attack(CombatTarget combatTarget)

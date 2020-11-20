@@ -967,7 +967,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 459405371, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
       propertyPath: m_StoppingDistance
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8065350583050218659, guid: f57015b862f614748addfc7a8e8a3986,
         type: 3}
@@ -1029,13 +1029,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8365913434873169839, guid: f57015b862f614748addfc7a8e8a3986,
-        type: 3}
-      propertyPath: weaponRange
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3288436433358637880, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
 --- !u!1001 &1109001977
 PrefabInstance:

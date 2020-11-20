@@ -7,7 +7,9 @@ namespace RPG.Control
 	public class PlayerController : MonoBehaviour
 	{
 		CharacterMover characterMover;
+
 		Fighter characterFighter;
+
 		private void Start()
 		{
 			characterMover = GetComponent<CharacterMover>();

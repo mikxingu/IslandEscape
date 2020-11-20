@@ -26,6 +26,7 @@ namespace RPG.Movement
 		public void Stop()
 		{
 			currentAgent.Stop();
+			print("Stopping");
 		}
 
 		void UpdateAnimator()

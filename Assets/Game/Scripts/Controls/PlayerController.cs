@@ -22,20 +22,11 @@ namespace RPG.Control
 
 		void HandleInput()
 		{
-			// "S" Key to Stop
-			if (Input.GetKeyDown(KeyCode.S))
-			{
-				characterMover.Stop();
-			}
-
 			// Right click for combat/interaction
 			InteractRightClick();
 
-
 			// Left Click For movement/selection
-			if (InteractLeftClick()) return;
-
-			print("Nothing to do.");
+			InteractLeftClick();
 		}
 
 		
@@ -48,7 +39,8 @@ namespace RPG.Control
 			{
 				if (Input.GetMouseButton(0))
 				{
-					characterMover.MoveTo(hit.point);
+					characterMover.MoveToPoint(hit.point);
+					characterFighter.RemoveTarget();
 				}
 				return true;
 			}

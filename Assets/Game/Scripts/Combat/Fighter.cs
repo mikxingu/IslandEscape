@@ -5,8 +5,9 @@ namespace RPG.Combat
 {
 	public class Fighter : MonoBehaviour
 	{
-		[SerializeField] float weaponRange = 2f;
-		Transform targetTransform;
+		[SerializeField] [Range (1f, 10f)] float weaponRange;
+		
+		[SerializeField] Transform targetTransform;
 
 		CharacterMover characterMover;
 
@@ -17,23 +18,32 @@ namespace RPG.Combat
 
 		private void Update()
 		{
-			bool isInRange = Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
-
 			if (targetTransform == null) return;
+			bool isInRange = Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
 			
-			// If I have a target, I should agro it.
 			if (!isInRange)
 			{
-				characterMover.MoveTo(targetTransform.position);
+				characterMover.MoveToPoint(targetTransform.position);
+				
 			}
-			else
-			{
-				//characterMover.Stop();
-			}
+			FaceTarget();
 		}
 		public void Attack(CombatTarget combatTarget)
 		{
 			targetTransform = combatTarget.transform;
+		}
+
+		public void RemoveTarget()
+		{
+			targetTransform = null;
+
+		}
+
+		void FaceTarget()
+		{
+			Vector3 direction = (targetTransform.position - transform.position).normalized;
+			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 		}
     }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RPG.Combat;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace RPG.Movement 
@@ -11,16 +12,15 @@ namespace RPG.Movement
 		{
 			currentAgent = GetComponent<NavMeshAgent>();
 		}
+
 		private void Update()
 		{
 			UpdateAnimator();
 		}
 
-
-
-		public void MoveTo(Vector3 destination)
+		public void MoveToPoint(Vector3 destination)
 		{
-			currentAgent.destination = destination;
+			currentAgent.SetDestination(destination);
 		}
 
 		public void Stop()
@@ -37,5 +37,4 @@ namespace RPG.Movement
 			GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
 		}
 	}
-
 }

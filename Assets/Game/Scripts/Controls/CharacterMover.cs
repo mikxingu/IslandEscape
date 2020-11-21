@@ -1,6 +1,7 @@
 ﻿using RPG.Combat;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Core;
 
 namespace RPG.Movement 
 {
@@ -8,9 +9,10 @@ namespace RPG.Movement
 	{
 		NavMeshAgent currentAgent;
 		Fighter currentFighter;
-
+		ActionScheduler actionScheduler;
 		private void Start()
 		{
+			actionScheduler = GetComponent<ActionScheduler>();
 			currentAgent = GetComponent<NavMeshAgent>();
 			currentFighter = GetComponent<Fighter>();
 		}
@@ -28,6 +30,7 @@ namespace RPG.Movement
 			}
 			
 			currentAgent.SetDestination(destination);
+			actionScheduler.StartAction(this);
 		}
 
 		public void Stop()

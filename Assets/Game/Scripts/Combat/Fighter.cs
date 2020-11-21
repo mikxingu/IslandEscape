@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using RPG.Movement;
+using RPG.Core;
 
 namespace RPG.Combat
 {
@@ -11,9 +12,14 @@ namespace RPG.Combat
 
 		CharacterMover characterMover;
 
+		ActionScheduler actionScheduler;
+
+		
+
 		private void Start()
 		{
 			characterMover = GetComponent<CharacterMover>();
+			actionScheduler = GetComponent<ActionScheduler>();
 		}
 
 		private void Update()
@@ -30,6 +36,7 @@ namespace RPG.Combat
 		}
 		public void Attack(CombatTarget combatTarget)
 		{
+			actionScheduler.StartAction(this);
 			targetTransform = combatTarget.transform;
 		}
 

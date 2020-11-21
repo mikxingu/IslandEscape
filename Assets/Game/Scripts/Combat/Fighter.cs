@@ -32,8 +32,20 @@ namespace RPG.Combat
 				characterMover.MoveToPoint(targetTransform.position);
 				
 			}
+			else
+			{
+				characterMover.CancelAction();
+				AttackBehaviour();
+
+			}
 			FaceTarget();
 		}
+
+		private void AttackBehaviour()
+		{
+			GetComponent<Animator>().SetTrigger("attack");
+		}
+
 		public void Attack(CombatTarget combatTarget)
 		{
 			actionScheduler.StartAction(this);
@@ -51,6 +63,12 @@ namespace RPG.Combat
 			Vector3 direction = (targetTransform.position - transform.position).normalized;
 			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
 			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+		}
+
+		//Animation Event
+		void Hit()
+		{
+
 		}
     }
 

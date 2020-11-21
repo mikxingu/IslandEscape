@@ -5,7 +5,7 @@ namespace RPG.Combat
 {
 	public class Fighter : MonoBehaviour
 	{
-		[SerializeField] [Range (1f, 10f)] float weaponRange;
+		public float weaponRange = 2f;
 		
 		[SerializeField] Transform targetTransform;
 

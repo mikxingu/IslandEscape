@@ -5,11 +5,12 @@ using RPG.Core;
 
 namespace RPG.Movement 
 {
-	public class CharacterMover : MonoBehaviour
+	public class CharacterMover : MonoBehaviour, IAction
 	{
 		NavMeshAgent currentAgent;
 		Fighter currentFighter;
 		ActionScheduler actionScheduler;
+
 		private void Start()
 		{
 			actionScheduler = GetComponent<ActionScheduler>();
@@ -33,12 +34,13 @@ namespace RPG.Movement
 			actionScheduler.StartAction(this);
 		}
 
-		public void Stop()
+		public void CancelAction()
 		{
 			currentAgent.Stop();
 			print("Stopping");
 		}
-
+		
+	
 		void UpdateAnimator()
 		{
 			Vector3 velocity = currentAgent.velocity;

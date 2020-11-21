@@ -40,7 +40,7 @@ namespace RPG.Control
 				if (Input.GetMouseButton(0))
 				{
 					characterMover.MoveToPoint(hit.point);
-					characterFighter.RemoveTarget();
+					characterFighter.CancelAction();
 				}
 				return true;
 			}

@@ -7,6 +7,7 @@ namespace RPG.Combat
 	public class Fighter : MonoBehaviour, IAction
 	{
 		public float weaponRange = 2f;
+		public float weaponDamage = 5f;
 		public float attackCooldown = 1f;
 
 		float lastAttackTime;
@@ -78,8 +79,8 @@ namespace RPG.Combat
 		//Animation Event
 		void Hit()
 		{
-
+			print("Do Damage");
+			targetTransform.GetComponent<Health>().TakeDamage(weaponDamage);
 		}
     }
-
 }

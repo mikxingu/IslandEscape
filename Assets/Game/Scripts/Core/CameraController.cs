@@ -5,7 +5,7 @@ namespace RPG.Core
     public class CameraController : MonoBehaviour
     {
         [SerializeField] Transform targetTransform;
-		[SerializeField] Vector3 offset;
+		[SerializeField] Vector3 offset = new Vector3(0,0,0);
 
         [SerializeField] float pitch = 2f;
         [SerializeField] float zoomSpeed = 4f;
@@ -22,6 +22,8 @@ namespace RPG.Core
             if (Input.GetMouseButton(2))
             {
                 currentYaw -= Input.GetAxis("Mouse X") * yawSpeed * Time.deltaTime;
+                if (currentYaw >= 359) { currentYaw = 0; }
+
             }
         }
         private void LateUpdate()

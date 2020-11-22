@@ -45,14 +45,11 @@ namespace RPG.Combat
 			{
 				characterMover.CancelAction();
 				AttackBehaviour();
-
 			}
-			//FaceTarget();
 		}
 
 		private void AttackBehaviour()
 		{
-			//transform.LookAt(target.transform.position);
 			FaceTarget();
 			if (lastAttackTime > attackCooldown)
 			{

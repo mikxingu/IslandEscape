@@ -1,7 +1,7 @@
-﻿using RPG.Combat;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
+using RPG.Combat;
 
 namespace RPG.Movement 
 {
@@ -29,15 +29,14 @@ namespace RPG.Movement
 			{
 				currentAgent.stoppingDistance = currentFighter.weaponRange;
 			}
-			
+
 			currentAgent.SetDestination(destination);
 			actionScheduler.StartAction(this);
 		}
 
 		public void CancelAction()
 		{
-			//currentAgent.Stop();
-			print("Stopping");
+
 		}
 		
 	

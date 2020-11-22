@@ -46,6 +46,7 @@ namespace RPG.Control
 			}
 			return false;
 		}
+
 		void InteractRightClick()
 		{
 				RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());

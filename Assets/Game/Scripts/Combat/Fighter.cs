@@ -32,15 +32,19 @@ namespace RPG.Combat
 
 			if (target == null) return;
 
-			if (target.IsDead()) return;
+			if (target.IsDead())
+			{
+				target = null;
+				return;
+			}
 
-			bool isInRange = Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+			bool isInRangeToAttack = Vector3.Distance(transform.position, target.transform.position) < weaponRange;
 			
-			if (!isInRange)
+			if (!isInRangeToAttack)
 			{
 				characterMover.MoveToPoint(target.transform.position);
-				
 			}
+
 			else
 			{
 				characterMover.CancelAction();
@@ -53,16 +57,9 @@ namespace RPG.Combat
 			FaceTarget();
 			if (lastAttackTime > attackCooldown)
 			{
-				TriggerAttack();
+				TriggerAttackAnimation();
 				lastAttackTime = 0f;
 			}
-
-		}
-
-		private void TriggerAttack()
-		{
-			GetComponent<Animator>().ResetTrigger("stopattack");
-			GetComponent<Animator>().SetTrigger("attack");
 		}
 
 		public void Attack(CombatTarget combatTarget)
@@ -73,15 +70,19 @@ namespace RPG.Combat
 
 		public void CancelAction()
 		{
-			StopAttack();
+			StopAttackAnimation();
 			target = null;
-
 		}
 
-		private void StopAttack()
+		
+
+		//ANIMATION EVENTS
+		void Hit()
 		{
-			GetComponent<Animator>().ResetTrigger("attack");
-			GetComponent<Animator>().SetTrigger("stopattack");
+			if (target != null)
+			{
+				target.TakeDamage(weaponDamage);
+			}
 		}
 
 		void FaceTarget()
@@ -91,13 +92,23 @@ namespace RPG.Combat
 			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 		}
 
-		//Animation Event
-		void Hit()
+
+		private void TriggerAttackAnimation()
 		{
-			if (target != null)
-			{
-				target.TakeDamage(weaponDamage);
-			}
+			GetComponent<Animator>().ResetTrigger("stopattack");
+			GetComponent<Animator>().SetTrigger("attack");
 		}
-    }
+
+		private void StopAttackAnimation()
+		{
+			GetComponent<Animator>().ResetTrigger("attack");
+			GetComponent<Animator>().SetTrigger("stopattack");
+		}
+
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(this.transform.position, weaponRange);
+		}
+	}
 }

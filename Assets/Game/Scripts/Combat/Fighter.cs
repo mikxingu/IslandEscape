@@ -12,7 +12,7 @@ namespace RPG.Combat
 
 		float lastAttackTime;
 		
-		[SerializeField] Transform targetTransform;
+		[SerializeField] Health target;
 
 		CharacterMover characterMover;
 
@@ -30,12 +30,15 @@ namespace RPG.Combat
 		{
 			lastAttackTime += Time.deltaTime;
 
-			if (targetTransform == null) return;
-			bool isInRange = Vector3.Distance(transform.position, targetTransform.position) < weaponRange;
+			if (target == null) return;
+
+			if (target.IsDead()) return;
+
+			bool isInRange = Vector3.Distance(transform.position, target.transform.position) < weaponRange;
 			
 			if (!isInRange)
 			{
-				characterMover.MoveToPoint(targetTransform.position);
+				characterMover.MoveToPoint(target.transform.position);
 				
 			}
 			else
@@ -49,6 +52,7 @@ namespace RPG.Combat
 
 		private void AttackBehaviour()
 		{
+			transform.LookAt(target.transform.position);
 			if (lastAttackTime > attackCooldown)
 			{
 				GetComponent<Animator>().SetTrigger("attack");
@@ -60,27 +64,28 @@ namespace RPG.Combat
 		public void Attack(CombatTarget combatTarget)
 		{
 			actionScheduler.StartAction(this);
-			targetTransform = combatTarget.transform;
+			target = combatTarget.GetComponent<Health>();
 		}
 
 		public void CancelAction()
 		{
-			targetTransform = null;
+			GetComponent<Animator>().SetTrigger("stopattack");
+			target = null;
 
 		}
 
-		void FaceTarget()
-		{
-			Vector3 direction = (targetTransform.position - transform.position).normalized;
-			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-		}
+		//void FaceTarget()
+		//{
+			//Vector3 direction = (target.transform.position - transform.position).normalized;
+			//Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+			//transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+	//	}
 
 		//Animation Event
 		void Hit()
 		{
 			print("Do Damage");
-			targetTransform.GetComponent<Health>().TakeDamage(weaponDamage);
+			target.TakeDamage(weaponDamage);
 		}
     }
 }

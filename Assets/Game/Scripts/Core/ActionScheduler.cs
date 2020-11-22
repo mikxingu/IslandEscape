@@ -6,7 +6,7 @@ namespace RPG.Core
 {
 	public class ActionScheduler : MonoBehaviour
 	{
-		IAction currentAction;
+		[SerializeField] IAction currentAction;
 		public void StartAction (IAction action)
 		{
 			if (currentAction == action) return;

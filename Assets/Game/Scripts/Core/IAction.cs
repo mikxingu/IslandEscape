@@ -3,7 +3,6 @@
     public interface IAction
     {
         void CancelAction();
-
     }
 
 }

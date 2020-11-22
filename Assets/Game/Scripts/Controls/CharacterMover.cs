@@ -37,7 +37,7 @@ namespace RPG.Movement
 		public void CancelAction()
 		{
 			//currentAgent.Stop();
-			//print("Stopping");
+			print("Stopping");
 		}
 		
 	

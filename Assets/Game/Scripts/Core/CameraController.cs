@@ -5,7 +5,7 @@ namespace RPG.Core
     public class CameraController : MonoBehaviour
     {
         [SerializeField] Transform targetTransform;
-        [SerializeField] Vector3 offset;
+		[SerializeField] Vector3 offset;
 
         [SerializeField] float pitch = 2f;
         [SerializeField] float zoomSpeed = 4f;

@@ -47,18 +47,25 @@ namespace RPG.Combat
 				AttackBehaviour();
 
 			}
-			FaceTarget();
+			//FaceTarget();
 		}
 
 		private void AttackBehaviour()
 		{
-			transform.LookAt(target.transform.position);
+			//transform.LookAt(target.transform.position);
+			FaceTarget();
 			if (lastAttackTime > attackCooldown)
 			{
-				GetComponent<Animator>().SetTrigger("attack");
+				TriggerAttack();
 				lastAttackTime = 0f;
 			}
-			
+
+		}
+
+		private void TriggerAttack()
+		{
+			GetComponent<Animator>().ResetTrigger("stopattack");
+			GetComponent<Animator>().SetTrigger("attack");
 		}
 
 		public void Attack(CombatTarget combatTarget)
@@ -69,23 +76,31 @@ namespace RPG.Combat
 
 		public void CancelAction()
 		{
-			GetComponent<Animator>().SetTrigger("stopattack");
+			StopAttack();
 			target = null;
 
 		}
 
-		//void FaceTarget()
-		//{
-			//Vector3 direction = (target.transform.position - transform.position).normalized;
-			//Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-			//transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-	//	}
+		private void StopAttack()
+		{
+			GetComponent<Animator>().ResetTrigger("attack");
+			GetComponent<Animator>().SetTrigger("stopattack");
+		}
+
+		void FaceTarget()
+		{
+			Vector3 direction = (target.transform.position - transform.position).normalized;
+			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+		}
 
 		//Animation Event
 		void Hit()
 		{
-			print("Do Damage");
-			target.TakeDamage(weaponDamage);
+			if (target != null)
+			{
+				target.TakeDamage(weaponDamage);
+			}
 		}
     }
 }

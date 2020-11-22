@@ -1440,6 +1440,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 435538264261835196, guid: 01edde85ce901ac46b173e34cad28cde,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2161454936759505584, guid: 01edde85ce901ac46b173e34cad28cde,
         type: 3}
       propertyPath: m_Name

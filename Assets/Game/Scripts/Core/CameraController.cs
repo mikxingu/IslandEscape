@@ -14,19 +14,21 @@ namespace RPG.Core
         [SerializeField] float yawSpeed = 100f;
         [SerializeField] float currentZoom = 10f;
         [SerializeField] float currentYaw = 0f;
-        void Update()
-        {
-            currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-            currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
-            if (Input.GetMouseButton(2))
-            {
-                currentYaw -= Input.GetAxis("Mouse X") * yawSpeed * Time.deltaTime;
-                if (currentYaw >= 359) { currentYaw = 0; }
+		public void MoveCamera()
+		{
+			currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+			currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
-            }
-        }
-        private void LateUpdate()
+			if (Input.GetMouseButton(2))
+			{
+				currentYaw -= Input.GetAxis("Mouse X") * yawSpeed * Time.deltaTime;
+				if (currentYaw >= 359) { currentYaw = 0; }
+
+			}
+		}
+
+		private void LateUpdate()
         {
 
             transform.position = targetTransform.position - offset * currentZoom;

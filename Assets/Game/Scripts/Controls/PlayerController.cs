@@ -1,5 +1,6 @@
 ﻿using RPG.Movement;
 using RPG.Combat;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Control
@@ -27,6 +28,9 @@ namespace RPG.Control
 
 			// Left Click For movement/selection
 			InteractLeftClick();
+
+			// Middle Mouse To Control Camera
+			ControlCamera();
 		}
 
 		
@@ -67,6 +71,13 @@ namespace RPG.Control
 		private static Ray GetMouseRay()
 		{
 			return Camera.main.ScreenPointToRay(Input.mousePosition);
+		}
+
+		void ControlCamera()
+		{
+			CameraController cam = Camera.main.GetComponent<CameraController>();
+			cam.MoveCamera();
+
 		}
 	}
 }

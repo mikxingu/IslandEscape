@@ -62,7 +62,7 @@ namespace RPG.Combat
 			}
 		}
 
-		public void Attack(CombatTarget combatTarget)
+		public void Attack(GameObject combatTarget)
 		{
 			actionScheduler.StartAction(this);
 			target = combatTarget.GetComponent<Health>();

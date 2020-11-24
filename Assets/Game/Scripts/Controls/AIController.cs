@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using RPG.Combat;
 
 
 /* == TODO ==
@@ -18,6 +19,13 @@ namespace RPG.Control
     {
         [SerializeField] float combatRadius = 5f;
 
+		Fighter aiFighter;
+
+		private void Start()
+		{
+			aiFighter = GetComponent<Fighter>();
+		}
+
 		private void Update()
 		{
 			GameObject player = GameObject.FindWithTag("Player");
@@ -25,7 +33,12 @@ namespace RPG.Control
 
 			if (isInChaseRadius)
 			{
+				aiFighter.Attack(player);
 				print(gameObject.name + " will chase the player");
+			}
+			else
+			{
+				aiFighter.CancelAction();
 			}
 		}
 

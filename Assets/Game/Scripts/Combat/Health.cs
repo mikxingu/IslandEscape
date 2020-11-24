@@ -21,13 +21,14 @@ namespace RPG.Combat
             if (health == 0)
 			{
 				Die();
-				//Destroy(this.gameObject); THIS WILL BE ENABLED AFTER
+				//Destroy(this.gameObject); //THIS WILL BE ENABLED AFTER
 			}
 
 		}
 
 		private void Die()
 		{
+			
 			if (isDead) return;
 
 			isDead = true;

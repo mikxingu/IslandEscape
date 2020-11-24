@@ -11,6 +11,7 @@ namespace RPG.Movement
 		Fighter currentFighter;
 		ActionScheduler actionScheduler;
 
+
 		private void Start()
 		{
 			actionScheduler = GetComponent<ActionScheduler>();
@@ -18,21 +19,28 @@ namespace RPG.Movement
 			currentFighter = GetComponent<Fighter>();
 		}
 
+
 		private void Update()
 		{
 			UpdateAnimator();
 		}
 
+
 		public void MoveToPoint(Vector3 destination)
 		{
-			if (currentFighter.weaponRange != 0)
-			{
-				currentAgent.stoppingDistance = currentFighter.weaponRange;
-			}
-
+		 	currentAgent.stoppingDistance = 0;
 			currentAgent.SetDestination(destination);
 			actionScheduler.StartAction(this);
 		}
+
+
+		public void MoveToAttack(Vector3 destination)
+		{
+			currentAgent.stoppingDistance = currentFighter.weaponRange;
+			currentAgent.SetDestination(destination);
+			actionScheduler.StartAction(this);
+		}
+
 
 		public void CancelAction()
 		{

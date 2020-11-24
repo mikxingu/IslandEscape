@@ -42,7 +42,7 @@ namespace RPG.Combat
 			
 			if (!isInRangeToAttack)
 			{
-				characterMover.MoveToPoint(target.transform.position);
+				characterMover.MoveToAttack(target.transform.position);
 			}
 
 			else

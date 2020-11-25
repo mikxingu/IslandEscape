@@ -6,7 +6,7 @@ namespace RPG.Combat
 {
 	public class Fighter : MonoBehaviour, IAction
 	{
-		public float weaponRange = 2f;
+		public float defaultWeaponRange = 2f;
 		public float weaponDamage = 5f;
 		public float attackCooldown = 1f;
 
@@ -38,7 +38,7 @@ namespace RPG.Combat
 				return;
 			}
 
-			bool isInRangeToAttack = Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+			bool isInRangeToAttack = Vector3.Distance(transform.position, target.transform.position) < defaultWeaponRange;
 			
 			if (!isInRangeToAttack)
 			{
@@ -108,7 +108,7 @@ namespace RPG.Combat
 		private void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawWireSphere(this.transform.position, weaponRange);
+			Gizmos.DrawWireSphere(this.transform.position, defaultWeaponRange);
 		}
 	}
 }

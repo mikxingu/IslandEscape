@@ -40,7 +40,7 @@ namespace RPG.Movement
 
 		public void MoveToAttack(Vector3 destination)
 		{
-			currentAgent.stoppingDistance = currentFighter.weaponRange;
+			currentAgent.stoppingDistance = currentFighter.defaultWeaponRange;
 			currentAgent.SetDestination(destination);
 			actionScheduler.StartAction(this);
 		}

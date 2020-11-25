@@ -20,12 +20,16 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] float combatRadius = 5f;
+		
+		CombatState currentState = CombatState.guarding;
 
 		CharacterMover aiMover;
 		Fighter aiFighter;
 		Health health;
 
 		Vector3 guardLocation;
+		float timeLastSeenPlayer = 0;
+		[SerializeField] float suspicionTime = 3f;
 
 		private void Start()
 		{
@@ -44,14 +48,29 @@ namespace RPG.Control
 
 			if (isInChaseRadius && player.GetComponent<CapsuleCollider>().enabled)
 			{
-				aiFighter.Attack(player);
+				timeLastSeenPlayer = 0;
 				print(gameObject.name + " will chase the player");
+				currentState = CombatState.fighting;
+				aiFighter.Attack(player);
+				
 			}
+			else if (timeLastSeenPlayer < suspicionTime)
+			{
+				currentState = CombatState.suspicious;
+				aiFighter.CancelAction();
+				//timeLastSeenPlayer -= Time.deltaTime;
+			}
+
 			else
 			{
+				currentState = CombatState.guarding;
 				aiFighter.CancelAction();
 				aiMover.MoveToPoint(guardLocation);
+				
 			}
+
+			timeLastSeenPlayer += Time.deltaTime;
+
 		}
 
 		private void OnDrawGizmosSelected()

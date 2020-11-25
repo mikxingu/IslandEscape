@@ -36,7 +36,7 @@ namespace RPG.Control
 			GameObject player = GameObject.FindWithTag("Player");
 			bool isInChaseRadius = Vector3.Distance(transform.position, player.transform.position) < combatRadius;
 
-			if (isInChaseRadius)
+			if (isInChaseRadius && player.GetComponent<CapsuleCollider>().enabled)
 			{
 				aiFighter.Attack(player);
 				print(gameObject.name + " will chase the player");

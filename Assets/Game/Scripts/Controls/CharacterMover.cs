@@ -25,6 +25,7 @@ namespace RPG.Movement
 		private void Update()
 		{
 			currentAgent.enabled = !currentHealth.IsDead();
+			currentFighter.enabled = !currentHealth.IsDead();
 			UpdateAnimator();
 		}
 

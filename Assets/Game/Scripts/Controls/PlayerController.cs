@@ -11,13 +11,17 @@ namespace RPG.Control
 
 		Fighter playerFighter;
 
+		Health playerHealth;
+
 		private void Start()
 		{
+			playerHealth = GetComponent<Health>();
 			playerMover = GetComponent<CharacterMover>();
 			playerFighter = GetComponent<Fighter>();
 		}
 		void Update()
 		{
+			if (playerHealth.IsDead()) return;
 			HandleInput();
 		}
 

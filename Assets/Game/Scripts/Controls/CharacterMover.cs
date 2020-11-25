@@ -10,6 +10,7 @@ namespace RPG.Movement
 		NavMeshAgent currentAgent;
 		Fighter currentFighter;
 		ActionScheduler actionScheduler;
+		Health currentHealth;
 
 
 		private void Start()
@@ -17,11 +18,13 @@ namespace RPG.Movement
 			actionScheduler = GetComponent<ActionScheduler>();
 			currentAgent = GetComponent<NavMeshAgent>();
 			currentFighter = GetComponent<Fighter>();
+			currentHealth = GetComponent<Health>();
 		}
 
 
 		private void Update()
 		{
+			currentAgent.enabled = !currentHealth.IsDead();
 			UpdateAnimator();
 		}
 

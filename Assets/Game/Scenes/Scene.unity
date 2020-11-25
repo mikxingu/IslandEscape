@@ -1035,7 +1035,12 @@ PrefabInstance:
     - target: {fileID: 2677217643821766635, guid: 43e06a9975b05bf4a997863a6aee45ec,
         type: 3}
       propertyPath: attackCooldown
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677217643821766635, guid: 43e06a9975b05bf4a997863a6aee45ec,
+        type: 3}
+      propertyPath: weaponRange
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4527018320794074339, guid: 43e06a9975b05bf4a997863a6aee45ec,
         type: 3}
@@ -1527,11 +1532,16 @@ PrefabInstance:
     - target: {fileID: 435538264261835196, guid: 01edde85ce901ac46b173e34cad28cde,
         type: 3}
       propertyPath: weaponRange
-      value: 1.2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2161454936759505584, guid: 01edde85ce901ac46b173e34cad28cde,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161454936759505584, guid: 01edde85ce901ac46b173e34cad28cde,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2161454936759505588, guid: 01edde85ce901ac46b173e34cad28cde,
@@ -1804,6 +1814,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2677217643821766635, guid: 43e06a9975b05bf4a997863a6aee45ec,
+        type: 3}
+      propertyPath: weaponRange
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4527018320794074339, guid: 43e06a9975b05bf4a997863a6aee45ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1863,6 +1878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854348231438166143, guid: 43e06a9975b05bf4a997863a6aee45ec,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43e06a9975b05bf4a997863a6aee45ec, type: 3}
@@ -1940,6 +1960,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2677217643821766635, guid: 43e06a9975b05bf4a997863a6aee45ec,
+        type: 3}
+      propertyPath: weaponRange
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4527018320794074339, guid: 43e06a9975b05bf4a997863a6aee45ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1999,6 +2024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854348231438166143, guid: 43e06a9975b05bf4a997863a6aee45ec,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43e06a9975b05bf4a997863a6aee45ec, type: 3}

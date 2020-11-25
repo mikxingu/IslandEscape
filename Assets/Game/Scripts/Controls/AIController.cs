@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using RPG.Combat;
+using RPG.Core;
 
 
 /* == TODO ==
@@ -20,14 +21,18 @@ namespace RPG.Control
         [SerializeField] float combatRadius = 5f;
 
 		Fighter aiFighter;
+		Health health;
 
 		private void Start()
 		{
 			aiFighter = GetComponent<Fighter>();
+			health = GetComponent<Health>();
 		}
 
 		private void Update()
 		{
+			if (health.IsDead()) return;
+
 			GameObject player = GameObject.FindWithTag("Player");
 			bool isInChaseRadius = Vector3.Distance(transform.position, player.transform.position) < combatRadius;
 

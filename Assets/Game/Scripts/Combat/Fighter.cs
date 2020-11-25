@@ -10,7 +10,7 @@ namespace RPG.Combat
 		public float weaponDamage = 5f;
 		public float attackCooldown = 1f;
 
-		float lastAttackTime;
+		float lastAttackTime = Mathf.Infinity;
 		
 		[SerializeField] Health target;
 

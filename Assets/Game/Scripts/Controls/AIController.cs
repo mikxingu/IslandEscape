@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using RPG.Combat;
 using RPG.Core;
+using RPG.Movement;
 
 
 /* == TODO ==
@@ -20,13 +21,18 @@ namespace RPG.Control
     {
         [SerializeField] float combatRadius = 5f;
 
+		CharacterMover aiMover;
 		Fighter aiFighter;
 		Health health;
+
+		Vector3 guardLocation;
 
 		private void Start()
 		{
 			aiFighter = GetComponent<Fighter>();
+			aiMover = GetComponent<CharacterMover>();
 			health = GetComponent<Health>();
+			guardLocation = transform.position;
 		}
 
 		private void Update()
@@ -44,6 +50,7 @@ namespace RPG.Control
 			else
 			{
 				aiFighter.CancelAction();
+				aiMover.MoveToPoint(guardLocation);
 			}
 		}
 

@@ -3,5 +3,5 @@
 namespace RPG.Combat
 {
 
-	public enum CombatState { guarding, suspicious, fighting}
+	public enum CombatState { guarding, patrolling, suspicious, fighting}
 }

@@ -20,24 +20,30 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] float combatRadius = 5f;
-		
+		[SerializeField] PatrolPath patrolPath;
+		[SerializeField] float waypointTolerance = 1f;
+		[SerializeField] float defaultMovementSpeed;
+
 		CombatState currentState = CombatState.guarding;
 
 		CharacterMover aiMover;
 		Fighter aiFighter;
 		Health health;
 
-		Vector3 guardLocation;
+		Vector3 guardPosition;
 
 		float timeLastSeenPlayer = 0;
 		[SerializeField] float suspicionTime = 3f;
+		[SerializeField] float patrolStepTime = 2f;
+
+		int currentWaypointIndex = 0;
 
 		private void Start()
 		{
 			aiFighter = GetComponent<Fighter>();
 			aiMover = GetComponent<CharacterMover>();
 			health = GetComponent<Health>();
-			guardLocation = transform.position;
+			guardPosition = transform.position;
 		}
 
 		private void Update()
@@ -61,16 +67,55 @@ namespace RPG.Control
 				aiFighter.CancelAction();
 			}
 
+			
 			else
 			{
-				currentState = CombatState.guarding;
-				aiFighter.CancelAction();
-				aiMover.MoveToPoint(guardLocation);
+				Vector3 nextPosition = guardPosition;
+
+				if (patrolPath != null)
+				{
+					print(transform.name + " has waypoints to follow.");
+					print(nextPosition);
+
+					if (AtWaypoint())
+					{
+						print("at Waypoint");
+						currentState = CombatState.patrolling;
+						CycleWaypoint();
+					}
+					nextPosition = GetCurrentWayPoint();
+					aiMover.MoveToPoint(nextPosition);
+				}
+				else
+				{
+
+					currentState = CombatState.guarding;
+					aiFighter.CancelAction();
+					aiMover.MoveToPoint(guardPosition);
+				}
+				
+
 				
 			}
 
 			timeLastSeenPlayer += Time.deltaTime;
 
+		}
+
+		private void CycleWaypoint()
+		{
+			currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+		}
+
+		private bool AtWaypoint()
+		{
+			float distanceToWaypoint = Vector3.Distance(transform.position, GetCurrentWayPoint());
+			return distanceToWaypoint < waypointTolerance;
+		}
+
+		private Vector3 GetCurrentWayPoint()
+		{
+			return patrolPath.GetWaypoint(currentWaypointIndex);
 		}
 
 		private void OnDrawGizmosSelected()

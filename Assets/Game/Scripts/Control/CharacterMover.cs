@@ -12,6 +12,8 @@ namespace RPG.Movement
 		ActionScheduler actionScheduler;
 		Health currentHealth;
 
+		float defaultMovementSpeed;
+
 
 		private void Start()
 		{
@@ -19,6 +21,7 @@ namespace RPG.Movement
 			currentAgent = GetComponent<NavMeshAgent>();
 			currentFighter = GetComponent<Fighter>();
 			currentHealth = GetComponent<Health>();
+			defaultMovementSpeed = currentAgent.speed;
 		}
 
 
@@ -45,6 +48,10 @@ namespace RPG.Movement
 			actionScheduler.StartAction(this);
 		}
 
+		public void ChangeMovementSpeed (float speed)
+		{
+			currentAgent.speed += defaultMovementSpeed * speed;
+		}
 
 		public void CancelAction()
 		{

@@ -34,8 +34,9 @@ namespace RPG.Control
 		Quaternion guardRotation;
 
 		float timeLastSeenPlayer = 0;
+		float timeInWayPoint = 0f;
 		[SerializeField] float suspicionTime = 3f;
-		[SerializeField] float patrolStepTime = 2f;
+		[SerializeField] float wayPointTime = 2f;
 
 		int currentWaypointIndex = 0;
 
@@ -79,12 +80,18 @@ namespace RPG.Control
 				{
 					if (AtWaypoint())
 					{
+						timeInWayPoint = 0f;
 						currentState = CombatState.patrolling;
 						CycleWaypoint();
 						aiMover.SetMovementSpeed(movementSpeed);
 					}
-					nextPosition = GetCurrentWayPoint();
-					aiMover.MoveToPoint(nextPosition);
+					if (timeInWayPoint >= wayPointTime)
+					{
+						nextPosition = GetCurrentWayPoint();
+						aiMover.MoveToPoint(nextPosition);
+					}
+					
+					timeInWayPoint += Time.deltaTime;
 				}
 				else
 				{
@@ -94,7 +101,7 @@ namespace RPG.Control
 					aiMover.MoveToPoint(guardPosition);
 					if (IsAtGuardPosition())
 					{
-						aiMover.transform.rotation = Quaternion.Lerp(transform.rotation, guardRotation, 10f * Time.deltaTime);
+						aiMover.transform.rotation = Quaternion.Lerp(transform.rotation, guardRotation, 3f * Time.deltaTime);
 					}
 					
 				}

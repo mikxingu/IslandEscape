@@ -28,6 +28,7 @@ namespace RPG.Control
 		Health health;
 
 		Vector3 guardLocation;
+
 		float timeLastSeenPlayer = 0;
 		[SerializeField] float suspicionTime = 3f;
 
@@ -58,7 +59,6 @@ namespace RPG.Control
 			{
 				currentState = CombatState.suspicious;
 				aiFighter.CancelAction();
-				//timeLastSeenPlayer -= Time.deltaTime;
 			}
 
 			else

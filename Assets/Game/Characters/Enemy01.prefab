@@ -26,6 +26,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60deca53b9575bb418c7d539279a1056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6953994125608502523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527018320794074343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8aee36c4df99794983866bacb5f4ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatRadius: 5
 --- !u!1001 &1675266924197055102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,6 +107,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 459405371, guid: f57015b862f614748addfc7a8e8a3986, type: 3}
+      propertyPath: m_Speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5527114242617604684, guid: f57015b862f614748addfc7a8e8a3986,
         type: 3}
       propertyPath: health
@@ -158,6 +175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365913434873169839, guid: f57015b862f614748addfc7a8e8a3986,
+        type: 3}
+      propertyPath: weaponRange
+      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 459405372, guid: f57015b862f614748addfc7a8e8a3986, type: 3}

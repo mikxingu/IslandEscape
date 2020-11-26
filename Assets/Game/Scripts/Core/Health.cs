@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RPG.Combat
+namespace RPG.Core
 {
 
     public class Health : MonoBehaviour
@@ -21,18 +21,20 @@ namespace RPG.Combat
             if (health == 0)
 			{
 				Die();
-				//Destroy(this.gameObject); THIS WILL BE ENABLED AFTER
+				//Destroy(this.gameObject); //THIS WILL BE ENABLED AFTER
 			}
 
 		}
 
 		private void Die()
 		{
+			
 			if (isDead) return;
 
 			isDead = true;
 			GetComponent<Animator>().SetTrigger("die");
 			GetComponent<CapsuleCollider>().enabled = false;
+			//GetComponent<ActionScheduler>().CancelCurrentAction();
 		}
 	}
 

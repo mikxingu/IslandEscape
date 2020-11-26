@@ -10,6 +10,9 @@ namespace RPG.Movement
 		NavMeshAgent currentAgent;
 		Fighter currentFighter;
 		ActionScheduler actionScheduler;
+		Health currentHealth;
+
+		float defaultMovementSpeed;
 
 
 		private void Start()
@@ -17,11 +20,15 @@ namespace RPG.Movement
 			actionScheduler = GetComponent<ActionScheduler>();
 			currentAgent = GetComponent<NavMeshAgent>();
 			currentFighter = GetComponent<Fighter>();
+			currentHealth = GetComponent<Health>();
+			defaultMovementSpeed = currentAgent.speed;
 		}
 
 
 		private void Update()
 		{
+			currentAgent.enabled = !currentHealth.IsDead();
+			currentFighter.enabled = !currentHealth.IsDead();
 			UpdateAnimator();
 		}
 
@@ -36,11 +43,20 @@ namespace RPG.Movement
 
 		public void MoveToAttack(Vector3 destination)
 		{
-			currentAgent.stoppingDistance = currentFighter.weaponRange;
+			currentAgent.stoppingDistance = currentFighter.defaultWeaponRange;
 			currentAgent.SetDestination(destination);
 			actionScheduler.StartAction(this);
 		}
 
+		public void SetMovementSpeed (float speed)
+		{
+			currentAgent.speed = defaultMovementSpeed / speed;
+		}
+
+		public void SetDefaultMovementSpeed()
+		{
+			currentAgent.speed = defaultMovementSpeed;
+		}
 
 		public void CancelAction()
 		{

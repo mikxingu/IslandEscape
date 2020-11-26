@@ -7,17 +7,21 @@ namespace RPG.Control
 {
 	public class PlayerController : MonoBehaviour
 	{
-		CharacterMover characterMover;
+		CharacterMover playerMover;
 
-		Fighter characterFighter;
+		Fighter playerFighter;
+
+		Health playerHealth;
 
 		private void Start()
 		{
-			characterMover = GetComponent<CharacterMover>();
-			characterFighter = GetComponent<Fighter>();
+			playerHealth = GetComponent<Health>();
+			playerMover = GetComponent<CharacterMover>();
+			playerFighter = GetComponent<Fighter>();
 		}
 		void Update()
 		{
+			if (playerHealth.IsDead()) return;
 			HandleInput();
 		}
 
@@ -43,8 +47,8 @@ namespace RPG.Control
 			{
 				if (Input.GetMouseButton(0))
 				{
-					characterMover.MoveToPoint(hit.point);
-					characterFighter.CancelAction();
+					playerMover.MoveToPoint(hit.point);
+					playerFighter.CancelAction();
 				}
 				return true;
 			}
@@ -57,12 +61,16 @@ namespace RPG.Control
 				foreach (RaycastHit hit in hits)
 				{
 					CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+					
+					if (target == null) continue;
+
+					GameObject targetGameObject = target.gameObject;
 
 					if (Input.GetMouseButtonDown(1))
 					{
 						if (target != null)
 						{
-							characterFighter.Attack(target);
+							playerFighter.Attack(target.gameObject);
 						}
 					}
 				}

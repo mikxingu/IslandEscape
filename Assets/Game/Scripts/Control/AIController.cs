@@ -22,7 +22,7 @@ namespace RPG.Control
         [SerializeField] float combatRadius = 5f;
 		[SerializeField] PatrolPath patrolPath;
 		[SerializeField] float waypointTolerance = 1f;
-		[SerializeField] float defaultMovementSpeed;
+		[SerializeField] float movementSpeed;
 
 		CombatState currentState = CombatState.guarding;
 
@@ -31,6 +31,7 @@ namespace RPG.Control
 		Health health;
 
 		Vector3 guardPosition;
+		Quaternion guardRotation;
 
 		float timeLastSeenPlayer = 0;
 		[SerializeField] float suspicionTime = 3f;
@@ -44,6 +45,7 @@ namespace RPG.Control
 			aiMover = GetComponent<CharacterMover>();
 			health = GetComponent<Health>();
 			guardPosition = transform.position;
+			guardRotation = transform.rotation;
 		}
 
 		private void Update()
@@ -59,7 +61,8 @@ namespace RPG.Control
 				print(gameObject.name + " will chase the player");
 				currentState = CombatState.fighting;
 				aiFighter.Attack(player);
-				
+				aiMover.SetDefaultMovementSpeed();
+
 			}
 			else if (timeLastSeenPlayer < suspicionTime)
 			{
@@ -74,24 +77,26 @@ namespace RPG.Control
 
 				if (patrolPath != null)
 				{
-					print(transform.name + " has waypoints to follow.");
-					print(nextPosition);
-
 					if (AtWaypoint())
 					{
-						print("at Waypoint");
 						currentState = CombatState.patrolling;
 						CycleWaypoint();
+						aiMover.SetMovementSpeed(movementSpeed);
 					}
 					nextPosition = GetCurrentWayPoint();
 					aiMover.MoveToPoint(nextPosition);
 				}
 				else
 				{
-
+					aiMover.SetDefaultMovementSpeed();
 					currentState = CombatState.guarding;
 					aiFighter.CancelAction();
 					aiMover.MoveToPoint(guardPosition);
+					if (IsAtGuardPosition())
+					{
+						aiMover.transform.rotation = Quaternion.Lerp(transform.rotation, guardRotation, 10f * Time.deltaTime);
+					}
+					
 				}
 				
 
@@ -100,6 +105,16 @@ namespace RPG.Control
 
 			timeLastSeenPlayer += Time.deltaTime;
 
+		}
+
+		bool IsAtGuardPosition()
+		{
+			if (Vector3.Distance(transform.position, guardPosition) < waypointTolerance)
+			{
+				return true;
+			}
+			
+			return false;
 		}
 
 		private void CycleWaypoint()

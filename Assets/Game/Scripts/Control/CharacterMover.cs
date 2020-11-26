@@ -48,9 +48,14 @@ namespace RPG.Movement
 			actionScheduler.StartAction(this);
 		}
 
-		public void ChangeMovementSpeed (float speed)
+		public void SetMovementSpeed (float speed)
 		{
-			currentAgent.speed += defaultMovementSpeed * speed;
+			currentAgent.speed = defaultMovementSpeed / speed;
+		}
+
+		public void SetDefaultMovementSpeed()
+		{
+			currentAgent.speed = defaultMovementSpeed;
 		}
 
 		public void CancelAction()

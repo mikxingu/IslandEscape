@@ -39,6 +39,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatRadius: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
+  movementSpeed: 2
+  suspicionTime: 3
+  wayPointTime: 2
 --- !u!1001 &1675266924197055102
 PrefabInstance:
   m_ObjectHideFlags: 0

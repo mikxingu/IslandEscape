@@ -34,7 +34,7 @@ namespace RPG.Control
 			InteractLeftClick();
 
 			// Middle Mouse To Control Camera
-			ControlCamera();
+			//ControlCamera();
 		}
 
 		

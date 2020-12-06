@@ -9,8 +9,9 @@ namespace RPG.Cinematics
 		[SerializeField] PlayerController playerController;
 		private void Start()
 		{
-			GetComponent<PlayableDirector>().played += DisableControls;
 			GetComponent<PlayableDirector>().stopped += EnableControls;
+			GetComponent<PlayableDirector>().played += DisableControls;
+			
 		}
 		void EnableControls(PlayableDirector playableDirector)
 		{

@@ -81,12 +81,6 @@ namespace RPG.Control
 			return Camera.main.ScreenPointToRay(Input.mousePosition);
 		}
 
-		void ControlCamera()
-		{
-			CameraController cam = Camera.main.GetComponent<CameraController>();
-			cam.MoveCamera();
-
-		}
 	}
 }
 

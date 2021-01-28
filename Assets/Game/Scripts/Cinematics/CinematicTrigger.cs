@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Playables;
 using RPG.Movement;
 
@@ -14,13 +14,12 @@ namespace RPG.Cinematics
 			if (!hasPlayed && other.gameObject.tag == "Player")
 			{
 				playerMover = other.GetComponent<CharacterMover>();
-				playerMover.MoveToPoint(new Vector3(-18, 0, 15));
+				playerMover.MoveToPoint(new Vector3(-16, 0, 17));
 
-				GetComponent<PlayableDirector>().enabled = true;
+				//GetComponent<PlayableDirector>().enabled = true;
 				GetComponent<PlayableDirector>().Play();
 				hasPlayed = true;
 			}
 		}
 	}
-
 }

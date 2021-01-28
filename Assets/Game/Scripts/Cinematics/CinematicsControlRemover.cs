@@ -7,23 +7,36 @@ namespace RPG.Cinematics
 	public class CinematicsControlRemover : MonoBehaviour
 	{
 		[SerializeField] PlayerController playerController;
+
+		PlayableDirector currentDirector;
+
 		private void Start()
 		{
-			GetComponent<PlayableDirector>().stopped += EnableControls;
-			GetComponent<PlayableDirector>().played += DisableControls;
+			currentDirector = GetComponent<PlayableDirector>();
+			currentDirector.stopped += EnableControls;
+			currentDirector.played += DisableControls;
 			
 		}
 		void EnableControls(PlayableDirector playableDirector)
 		{
 			print("Enabled Controls");
 			playerController.enabled = true;
-			
 		}
 
 		void DisableControls(PlayableDirector playableDirector)
 		{
 			print("Disabled Controls");
 			playerController.enabled = false;
+		}
+
+		void Update()
+		{
+			/*
+			print(currentDirector.time);
+			if (currentDirector.time >= 16){
+				currentDirector.enabled = false;
+			}*/
+		
 		}
 	}
 }

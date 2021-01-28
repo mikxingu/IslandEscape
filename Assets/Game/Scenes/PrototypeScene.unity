@@ -1281,7 +1281,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9542203, y: 1}
+    m_SensorSize: {x: 1.732852, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1297,8 +1297,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320095061}
-  m_LocalRotation: {x: -0.030889435, y: 0.9651871, z: -0.22249536, w: -0.13399868}
-  m_LocalPosition: {x: 11.56, y: 20.28, z: 18.02}
+  m_LocalRotation: {x: 0.1698271, y: -0.6645688, z: 0.15893723, w: 0.7101029}
+  m_LocalPosition: {x: 40.1, y: 20.28, z: -24.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 341077749}
@@ -1316,7 +1316,6 @@ GameObject:
   - component: {fileID: 341077749}
   - component: {fileID: 341077752}
   - component: {fileID: 341077751}
-  - component: {fileID: 341077750}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1338,28 +1337,6 @@ Transform:
   m_Father: {fileID: 320095063}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &341077750
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341077748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &341077751
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -3439,7 +3416,6 @@ GameObject:
   - component: {fileID: 1095634691}
   - component: {fileID: 1095634694}
   - component: {fileID: 1095634693}
-  - component: {fileID: 1095634692}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -3461,28 +3437,6 @@ Transform:
   m_Father: {fileID: 1372829546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1095634692
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095634690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
 --- !u!114 &1095634693
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -4101,7 +4055,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1372829546}
   - component: {fileID: 1372829543}
-  - component: {fileID: 1372829545}
   - component: {fileID: 1372829544}
   m_Layer: 0
   m_Name: CM FollowPlayer
@@ -4139,7 +4092,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9542203, y: 1}
+    m_SensorSize: {x: 1.732852, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4167,25 +4120,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!320 &1372829545
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372829542}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 114948022279110436, guid: c0e2cc14ad5b64f429af37552b0728b4, type: 2}
-    value: {fileID: 1372829544}
-  m_ExposedReferences:
-    m_References: []
 --- !u!4 &1372829546
 Transform:
   m_ObjectHideFlags: 0
@@ -4193,8 +4127,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372829542}
-  m_LocalRotation: {x: 0.054562557, y: -0.35223135, z: 0.020574624, w: 0.9340946}
-  m_LocalPosition: {x: -9.8, y: 5.09, z: 6.3}
+  m_LocalRotation: {x: 0.3617622, y: -0.1460046, z: 0.0574762, w: 0.91897076}
+  m_LocalPosition: {x: -33.59, y: 14.67, z: 23.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1095634691}
@@ -5299,7 +5233,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.9542203, y: 1}
+    m_SensorSize: {x: 1.732852, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5713,6 +5647,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1010748416}
     m_Modifications:
+    - target: {fileID: 114914419021244149, guid: 01edde85ce901ac46b173e34cad28cde,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
     - target: {fileID: 435538264261835196, guid: 01edde85ce901ac46b173e34cad28cde,
         type: 3}
       propertyPath: weaponRange
@@ -6643,7 +6582,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856447502}
-  m_LocalRotation: {x: 0.08265893, y: 0.88407797, z: -0.14870541, w: -0.13399868}
+  m_LocalRotation: {x: 0.08058883, y: 0.8619373, z: -0.14498127, w: 0.47911388}
   m_LocalPosition: {x: -44.89053, y: 4.6172185, z: 42.900898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7525,7 +7464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2050247086
 Transform:
   m_ObjectHideFlags: 0
@@ -7588,6 +7527,7 @@ PlayableDirector:
     - ba85738e975000c47b600336cdd88be6: {fileID: 1372829543}
     - b79ecfbb256419d4a8f256955bba278d: {fileID: 1372829543}
     - 568008f24bf9df443962b19f765c32dc: {fileID: 1530916352}
+    - c4b02bd3f95f9474a8a3f467ebe7803c: {fileID: 1530916352}
     - 44b1c66a0f94a064982dfd6d0dc63a40: {fileID: 1530916352}
 --- !u!54 &2050247089
 Rigidbody:

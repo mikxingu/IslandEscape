@@ -1297,7 +1297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320095061}
-  m_LocalRotation: {x: 0.1698271, y: -0.6645688, z: 0.15893723, w: 0.7101029}
+  m_LocalRotation: {x: 0.16982709, y: -0.6645687, z: 0.1589372, w: 0.710103}
   m_LocalPosition: {x: 40.1, y: 20.28, z: -24.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4127,7 +4127,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372829542}
-  m_LocalRotation: {x: 0.3617622, y: -0.1460046, z: 0.0574762, w: 0.91897076}
+  m_LocalRotation: {x: 0.3617622, y: -0.14600457, z: 0.057476185, w: 0.91897076}
   m_LocalPosition: {x: -33.59, y: 14.67, z: 23.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5647,24 +5647,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1010748416}
     m_Modifications:
-    - target: {fileID: 114914419021244149, guid: 01edde85ce901ac46b173e34cad28cde,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
-    - target: {fileID: 435538264261835196, guid: 01edde85ce901ac46b173e34cad28cde,
-        type: 3}
-      propertyPath: weaponRange
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 2161454936759505584, guid: 01edde85ce901ac46b173e34cad28cde,
         type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2161454936759505584, guid: 01edde85ce901ac46b173e34cad28cde,
-        type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2161454936759505588, guid: 01edde85ce901ac46b173e34cad28cde,
@@ -7464,7 +7449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2050247086
 Transform:
   m_ObjectHideFlags: 0
@@ -7509,7 +7494,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: c0e2cc14ad5b64f429af37552b0728b4, type: 2}
   m_InitialState: 0
-  m_WrapMode: 0
+  m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
